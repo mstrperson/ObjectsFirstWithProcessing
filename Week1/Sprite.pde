@@ -6,13 +6,13 @@
 abstract class Sprite
 {
   // this Sprite's current location.
-  int x, y;
+  float x, y;
   
   // this Sprite's current velocity vector.
   float dx, dy;
   
   // initialize a Sprite at a given coordinate.
-  Sprite(int x, int y)
+  Sprite(float x, float y)
   {
     this.x = x;
     this.y = y;
@@ -24,7 +24,7 @@ abstract class Sprite
   // check to see if this Sprite is sitting on a particular color.
   boolean collidesWith(color c)
   {
-    return get(x,y)==c;
+    return get((int)x,(int)y)==c;
   }
   
   // make this Sprite move at the speed := |<dx, dy>| 
@@ -32,8 +32,8 @@ abstract class Sprite
   void chase(Sprite other)
   {
     float speed = sqrt(dx*dx + dy*dy);
-    int delX = other.x - this.x;
-    int delY = other.y - this.y;
+    float delX = other.x - this.x;
+    float delY = other.y - this.y;
     float mag = sqrt(delX*delX + delY*delY);
     
     if(delX != 0) x += (delX / mag) * speed;
@@ -41,13 +41,13 @@ abstract class Sprite
   }
   
   // make this Sprite move at the speed := |<dx, dy>| 
-  // directly toward another Sprite while maintaing
+  // directly toward another Sprite while mafloataing
   // a minimum follow distance
   void chase(Sprite other, float minFollowDistance)
   {
     float speed = sqrt(dx*dx + dy*dy);
-    int delX = other.x - this.x;
-    int delY = other.y - this.y;
+    float delX = other.x - this.x;
+    float delY = other.y - this.y;
     float mag = sqrt(delX*delX + delY*delY);
     
     if(mag > 0 && mag <= minFollowDistance) 
@@ -70,12 +70,12 @@ abstract class Sprite
   }
   
   // make this Sprite move at the speed := |<dx, dy>|
-  // directly toward your mouse pointer!
+  // directly toward your mouse pofloater!
   void followMouse()
   {
     float speed = sqrt(dx*dx + dy*dy);
-    int delX = mouseX - this.x;
-    int delY = mouseY - this.y;
+    float delX = mouseX - this.x;
+    float delY = mouseY - this.y;
     float mag = sqrt(delX*delX + delY*delY);
     
     if(delX != 0) x += (delX / mag) * speed;
@@ -110,6 +110,59 @@ abstract class Sprite
       y = height;
       dy *= -1;
     }
+  }
+  
+  // get the distance between centers of this Sprite and another
+  float distanceTo(Sprite other)
+  {
+    float delX = other.x - this.x;
+    float delY = other.y - this.y;
+    return sqrt(delX*delX + delY*delY);
+  }
+  
+  // Control this sprite using the Arrow Keys
+  void keyboardControl()
+  {
+    // If I hit the LEFT arrow, go Left
+    if(keyCode == LEFT)
+    {
+      dx = -1;
+      dy = 0;
+    }
+    // if I hit the RIGHT arrow, go Right
+    else if(keyCode == RIGHT)
+    {
+      dx = 1;
+      dy = 0;
+    }
+    // if I hit the UP arrow, go Up
+    if(keyCode == UP)
+    {
+      dy = -1;
+      dx = 0;
+    }
+    // if I hit the DOWN arrow, go Down
+    else if(keyCode == DOWN)
+    {
+      dy = 1;
+      dx = 0;
+    }
+    // if I hit the Space Bar, Stop
+    if(keyCode == ' ')
+    {
+      dx = 0;
+      dy = 0;
+    }
+    
+    // move x and y in the appropriate way
+    x = x + dx;
+    y = y + dy;
+    
+    // make sure we don't go out of bounds
+    if(x < 0) x = 0;
+    if(x > width) x = width;
+    if(y < 0) y = 0;
+    if(y > height) y = height;
   }
   
   // a Sprite itself is abstract and does not actually know
