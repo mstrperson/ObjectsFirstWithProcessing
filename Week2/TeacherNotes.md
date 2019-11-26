@@ -1,12 +1,8 @@
 # Week 1 Notes
 ## Objects First
 Traditional Computer Science education lacks the kind of magical black boxes that students can take apart and put back together the way we do with more hands on STEM electives.  This Objects-First approach provides students with some of those magical black boxes that can be used without requiring that they fully understand what is going on in the background.  The goal is that by the end of the course, students *should* be able to understand those black boxes well enough to modify and manipulate them to serve their purposes.
-### Sprite class
-`Sprite` is the first of these magic black boxes and definitely should not be the *subject* of the first week of class.  It provides a framework that students can build on and use throughtout the course and should eventually be readable by them.  But, for now, it's in the scary zone and should be glossed over beyond it's most basic description.
+### Player class
+`Player` is where the student should develop their avatar.  They can play with drawing in here and it can be a side burner project to continue developing throught the term as they learn new tricks.  Player is straight forward and only need to know its starting point and how to `drawSprite()`.  In the Week2 example code, the `draw()` method uses `player.keyboardControl()` which encapsulates using the arrow keys to control the character.  Since that isn't the major objective for this week, it can remain in the black box for now.  If there are particularly ambitious students, they might poke around in that code and see what it says.
 
-**A `Sprite` is a thing that has a position and velocity and can be drawn on the screen.**
-
-### Blob class
-`Blob` is the first most boring class that the students can directly interact with.  It has the concrete representation as a ball bouncing around the screen.
-
-The `Blob` class also has the *implementation* for the `drawSprite()` method.  This is where students can draw their character.  What is most important here is to reinforce that anything that the student draws in the `drawSprite()` method should reference the coordinates `x` and `y`.
+### Drawing Practice
+It is of utmost imporant to reinforce to the students that the `drawSprite()` method needs the student to reference the `x` and `y` coordinate of the `Player`.  To help student do this concretely, try using the graph paper, but a smaller piece that has **(X, Y)** as the center point of the graph instead of **(0, 0)** in the upper left corner.
