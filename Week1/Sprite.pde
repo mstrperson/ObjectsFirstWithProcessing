@@ -21,6 +21,15 @@ abstract class Sprite
     this.dy = 0;
   }
   
+  // initalize a Sprite at a given coordinate with a given velocity.
+  Sprite(float x, float y, float dx, float dy)
+  {
+    this.x = x;
+    this.y = y;
+    this.dx = dx;
+    this.dy = dy;
+  }
+  
   // check to see if this Sprite is sitting on a particular color.
   boolean collidesWith(color c)
   {
