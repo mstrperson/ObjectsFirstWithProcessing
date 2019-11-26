@@ -24,9 +24,7 @@ class Blob extends Sprite
   // Create a blob with a particular velocity vector.
   Blob(int x, int y, int r, float dx, float dy, color c)
   {
-    super(x, y);
-    this.dx = dx;
-    this.dy = dy;
+    super(x, y, dx, dy);
     myColor = c;
     radius = r;
   }
