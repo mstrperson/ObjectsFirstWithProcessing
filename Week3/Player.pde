@@ -15,7 +15,7 @@ class Player extends Sprite
     
     strokeWeight(1);
     //make the head
-    fill(180, 0, 200);
+    fill(128, 0, 200);
     ellipse(x, y, 30, 30);
     // make the ears
     fill(200, 20, 220);

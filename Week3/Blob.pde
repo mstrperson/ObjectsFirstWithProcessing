@@ -4,7 +4,7 @@
  * x, y, dx, and dy are all defined in the Sprite class and we get
  * all of those for free by using "extends Sprite"
  */
-class Blob extends Sprite
+class Blob extends Sprite implements Hitbox
 {
   // Blobs have a Radius and a color
   int radius;
@@ -29,6 +29,21 @@ class Blob extends Sprite
     radius = r;
   }
   
+  boolean collidesWith(Sprite other, float spriteSize)
+  {
+    if(other instanceof Blob)
+    {
+       return this.collidesWith((Blob)other);
+    }
+    
+    return this.distanceTo(other) < (this.radius + spriteSize) / 2;
+  }
+  
+  boolean collidesWith(Blob other)
+  {
+     return this.distanceTo(other) < (this.radius + other.radius) / 2;
+  }
+  
   // I can override the default Sprite.move() method by writing a new one here
   // this one will "bounce off of" a particular color in a boring way...
   void move()
@@ -47,6 +62,7 @@ class Blob extends Sprite
   // this defines how to draw the Blob; it's just a circle...
   void drawSprite()
   {
+    strokeWeight(1);
     fill(myColor);
     ellipse(x, y, radius, radius);
   }
