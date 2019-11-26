@@ -1,14 +1,16 @@
-Blob player;
+Player player;
 
 void setup()
 {
   size(500, 500);
   
-  player = new Blob(100, 100, 15, 1.25, 1.5, color(150, 0, 255));
+  player = new Player(100, 100);
 }
 
 void draw()
 {
-  player.move();
+  background(255,255,255);
+  
+  player.keyboardControl();
   player.drawSprite();
 }
