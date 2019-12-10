@@ -9,7 +9,9 @@ ImperfectReflector trampJump;
 
 BlobWithMass projectile;
 
-BlobWithMass[] moreBlobs = new BlobWithMass[5];
+int blobCount = 10;
+
+BlobWithMass[] moreBlobs = new BlobWithMass[blobCount];
 
 void setup()
 {
@@ -23,7 +25,7 @@ void setup()
   groundBounce = new ImperfectReflector(0, -1, 0.95, ground);
   gravity = new GravitationField(9.8/frameRate);
   
-  for(int i = 0; i < 5; i++)
+  for(int i = 0; i < blobCount; i++)
   {
     moreBlobs[i] = new BlobWithMass(new Vector2(random(width), random(height)), 7, color(64+random(192), 128+random(128), random(256)), 1+random(3));
   }
@@ -47,7 +49,7 @@ void draw()
   blackHole.move();
   blackHole2.move();
   
-  for(int i = 0; i < 5; i++)
+  for(int i = 0; i < blobCount; i++)
   {
     moreBlobs[i].drawSprite();
     moreBlobs[i].move();
@@ -62,9 +64,9 @@ void draw()
     moreBlobs[i].gravityWell.applyForce(blackHole2);
   }
   
-  for(int i = 0; i < 5; i++)
+  for(int i = 0; i < blobCount; i++)
   {
-    for(int j = 0; j < 5; j++)
+    for(int j = 0; j < blobCount; j++)
     {
       if(i != j)
       {
