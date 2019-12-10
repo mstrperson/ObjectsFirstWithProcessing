@@ -99,25 +99,22 @@ abstract class Sprite
     y += dy;
     
     // make sure we don't go out of bounds
+    // make sure we don't go out of bounds
     if(x < 0)
     { 
-      x = 0;
-      dx *= -1;
+      x += width;
     }
     if(x > width) 
     {
-      x = width;
-      dx *= -1;
+      x -= width;
     }
     if(y < 0) 
     {
-      y = 0;
-      dy *= -1;
+      y += height;
     }
     if(y > height)
     {
-      y = height;
-      dy *= -1;
+      y -= height;
     }
   }
   
