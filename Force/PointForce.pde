@@ -10,7 +10,7 @@ public class PointForce extends ForceEffect
   
   void applyForce(Sprite obj)
   {
-    Vector2 difference = this.location.subtract(obj.position);
+    Vector2 difference = this.location.shortestVectorTo(obj.position);
     float dist = difference.magnitude();
     float effect = force.x / dist;
     

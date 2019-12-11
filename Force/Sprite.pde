@@ -137,9 +137,21 @@ abstract class Sprite
   // get the distance between centers of this Sprite and another
   float distanceTo(Sprite other)
   {
-    float delX = other.position.x - this.position.x;
-    float delY = other.position.y - this.position.y;
-    return sqrt(delX*delX + delY*delY);
+    Vector2 difference = this.vectorTo(other);
+    return difference.magnitude();
+  }
+  
+  Vector2 vectorTo(Sprite other)
+  {
+    Vector2 difference = this.position.subtract(other.position);
+    
+    if(difference.x > width / 2) difference.x -= width;
+    if(difference.x < -width / 2) difference.x += width;
+    
+    if(difference.y > height / 2) difference.y -= height;
+    if(difference.y < -height / 2) difference.y += height;
+    
+    return difference;
   }
   
   // Control this sprite using the Arrow Keys

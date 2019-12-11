@@ -9,16 +9,16 @@ ImperfectReflector trampJump;
 
 BlobWithMass projectile;
 
-int blobCount = 10;
+int blobCount = 20;
 
 BlobWithMass[] moreBlobs = new BlobWithMass[blobCount];
 
 void setup()
 {
-  frameRate(250);
+  frameRate(60);
   fullScreen();
   brakes = new UniformForce(0.9);
-  blackHole = new BlobWithMass(new Vector2(2*width/3, height/2), 10, color(200, 180,0), 10+random(15));
+  blackHole = new BlobWithMass(new Vector2(2*width/3, height/2), 10, color(200, 180,0), -10-random(15));
   blackHole2 = new BlobWithMass(new Vector2(width/3, height/2), 10, color(255,128,80), 10+random(15));
   player = new Player(100, 100);
   ground = new Rectangle(-10, height - 20, width+20, 30, color(20, 200, 50));
@@ -33,7 +33,7 @@ void setup()
   trampoline = new Rectangle(width - 100, height - 50, 110, 60, color(200, 0, 180));
   trampJump = new ImperfectReflector(-1, -1, 1.5, trampoline);
   
-  projectile = new BlobWithMass(new Vector2(random(width), random(height)), 15, color(255, 30, 50), 1);
+  projectile = new BlobWithMass(new Vector2(random(width), random(height)), 15, color(255, 30, 50), -1-random(3));
 }
 
 void draw()
