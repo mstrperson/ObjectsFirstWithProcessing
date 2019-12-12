@@ -27,7 +27,7 @@ void setup()
   
   for(int i = 0; i < blobCount; i++)
   {
-    moreBlobs[i] = new BlobWithMass(new Vector2(random(width), random(height)), 7, color(64+random(192), 128+random(128), random(256)), 1+random(3));
+    moreBlobs[i] = new BlobWithMass(new Vector2(random(width), random(height)), 3, color(64+random(192), 128+random(128), random(256)), 1+random(3));
   }
   
   trampoline = new Rectangle(width - 100, height - 50, 110, 60, color(200, 0, 180));
