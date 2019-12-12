@@ -14,7 +14,7 @@ public class PointForce extends ForceEffect
     float dist = difference.magnitude() / 10;
     float effect = force.x / (dist*dist);
     
-    if(effect > 0.01 && dist > 5)
+    if(effect > 0.01 && dist > 2)
       obj.velocity = obj.velocity.add(difference.unitVector().scaleBy(effect));
   }
 }
